@@ -1,5 +1,6 @@
 import React from 'react'
 import { useFormik } from "formik"
+import { toast } from 'react-toastify';
 import { Button, TextField } from "@mui/material"
 import useApi from '../useApi'
 const AddSportsman = () => {
@@ -20,10 +21,17 @@ const AddSportsman = () => {
             type: ""
         },
         onSubmit: async (values, action) => {
+            toast.dismiss();
+            toast.loading("Adding Form Data");
             const response = await endpoint.post("/sports", values);
             console.log({ response });
             if (response.status == 200) {
+                toast.dismiss();
+                toast.success("Form Added Successfully");
                 action.resetForm();
+            } else {
+                toast.dismiss();
+                toast.error("Error while submitting form");
             }
         }
     })

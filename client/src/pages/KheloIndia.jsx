@@ -16,13 +16,16 @@ const KheloIndia = () => {
     return (
         <div className='container-fluid table-responsive'>
             {sportsData?.length > 0 &&
-                <table className="table table-bordered">
+                <table className="table table-striped table-primary table-bordered">
                     <thead>
                         <tr>
                             {Object.keys(sportsData[0]).map((data, i) => {
-                                return <th key={i}>{data}</th>
+                                // let regex = /^(_id|rank|start_no|start_no|start_no|date)/
+                                // if (data.match(regex)) {
+                                    return <th className='p-3' key={i}>{data}</th>
+                                // }
                             })}
-                            <th>Action</th>
+                            <th  className='p-3'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,9 +33,10 @@ const KheloIndia = () => {
                             return (
                                 <tr key={index}>
                                     {Object.values(sportdata).map((data, i) => {
-                                        return <td key={i}>{data}</td>
-                                    })}
-                                    <td>
+                                        return <td  className='p-3' key={i}>{data}</td>
+                                    })
+                                    }
+                                    <td  className='p-3'> 
                                         <a href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(sportdata))}`} download="filename.json">Download JSON</a>
                                     </td>
                                 </tr>
