@@ -22,10 +22,10 @@ const KheloIndia = () => {
                             {Object.keys(sportsData[0]).map((data, i) => {
                                 // let regex = /^(_id|rank|start_no|start_no|start_no|date)/
                                 // if (data.match(regex)) {
-                                    return <th className='p-3' key={i}>{data}</th>
+                                return <th className='p-3' key={i}>{data}</th>
                                 // }
                             })}
-                            <th  className='p-3'>Action</th>
+                            <th className='p-3'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,11 +33,11 @@ const KheloIndia = () => {
                             return (
                                 <tr key={index}>
                                     {Object.values(sportdata).map((data, i) => {
-                                        return <td  className='p-3' key={i}>{data}</td>
+                                        return <td className='p-3' key={i}>{data}</td>
                                     })
                                     }
-                                    <td  className='p-3'> 
-                                        <a href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(sportdata))}`} download="filename.json">Download JSON</a>
+                                    <td className='p-3'>
+                                        <a target='_blank' href={process.env.REACT_APP_BACKEND_URL + "/sports/" + sportdata._id}>JSON</a>
                                     </td>
                                 </tr>
                             )
